@@ -1,0 +1,380 @@
+<?xml version="1.0"?>
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+<files config:type="list">
+  <file>
+    <file_path>/etc/zypp/repos.d/repo-update.repo</file_path>
+    <file_contents>
+<![CDATA[
+[repo-update]
+name=openSUSE-Leap-${releasever}-Update
+enabled=1
+autorefresh=1
+baseurl=http://download.opensuse.org/update/leap/${releasever}/oss/
+path=/
+type=rpm-md
+priority=98
+keeppackages=0
+]]>
+    </file_contents>
+  </file>
+  <file>
+    <file_path>/etc/zypp/repos.d/oss.repo</file_path>
+    <file_contents>
+<![CDATA[
+[oss]
+name=repo-oss
+enabled=1
+autorefresh=1
+baseurl=http://download.opensuse.org/distribution/leap/${releasever}/repo/oss/
+path=/
+type=rpm-md
+keeppackages=0
+]]>
+    </file_contents>
+  </file>
+  <file>
+    <file_path>/etc/sudoers.d/ansible-provisioner</file_path>
+    <file_contents>
+<![CDATA[
+provisioner ALL=(ALL) NOPASSWD: ALL
+]]>
+    </file_contents>
+  </file>
+</files>
+  <install>
+    <init>
+      <info_file>
+install: nfs://nas.home.jeffm.io/data/tftpboot/images/openSUSE-Leap-15.3/x86_64
+textmode: 1
+      </info_file>
+    </init>
+  </install>
+  <bootloader>
+    <global>
+      <append>splash=silent quiet showopts crashkernel=165M,high crashkernel=72M,low</append>
+      <gfxmode>auto</gfxmode>
+      <hiddenmenu>false</hiddenmenu>
+      <os_prober>false</os_prober>
+      <terminal>console</terminal>
+      <timeout config:type="integer">8</timeout>
+      <trusted_grub>false</trusted_grub>
+    </global>
+    <loader_type>grub2-efi</loader_type>
+  </bootloader>
+  <deploy_image>
+    <image_installation config:type="boolean">true</image_installation>
+  </deploy_image>
+  <general>
+    <ask-list config:type="list"/>
+    <mode>
+      <confirm config:type="boolean">false</confirm>
+    </mode>
+    <proposals config:type="list"/>
+    <signature-handling>
+      <accept_file_without_checksum config:type="boolean">true</accept_file_without_checksum>
+      <accept_non_trusted_gpg_key config:type="boolean">true</accept_non_trusted_gpg_key>
+      <accept_unknown_gpg_key config:type="boolean">true</accept_unknown_gpg_key>
+      <accept_unsigned_file config:type="boolean">true</accept_unsigned_file>
+      <accept_verification_failed config:type="boolean">false</accept_verification_failed>
+      <import_gpg_key config:type="boolean">true</import_gpg_key>
+    </signature-handling>
+    <storage>
+      <start_multipath config:type="boolean">false</start_multipath>
+    </storage>
+  </general>
+  <kdump>
+    <add_crash_kernel config:type="boolean">true</add_crash_kernel>
+    <crash_kernel config:type="list">
+      <listentry>165M,high</listentry>
+      <listentry>72M,low</listentry>
+    </crash_kernel>
+  </kdump>
+  <keyboard>
+    <keymap>english-us</keymap>
+  </keyboard>
+  <language>
+    <language>en_US</language>
+    <languages/>
+  </language>
+  <login_settings/>
+  <networking>
+    <dhcp_options>
+      <dhclient_client_id/>
+      <dhclient_hostname_option>AUTO</dhclient_hostname_option>
+    </dhcp_options>
+    <dns>
+      <dhcp_hostname config:type="boolean">true</dhcp_hostname>
+      <domain>home.jeffm.io</domain>
+      <resolv_conf_policy>auto</resolv_conf_policy>
+      <write_hostname config:type="boolean">false</write_hostname>
+    </dns>
+    <interfaces config:type="list">
+      <interface>
+        <bootproto>dhcp</bootproto>
+        <device>eth0</device>
+        <dhclient_set_default_route>yes</dhclient_set_default_route>
+        <startmode>auto</startmode>
+      </interface>
+      <interface>
+        <bootproto>static</bootproto>
+        <device>lo</device>
+        <firewall>no</firewall>
+        <ipaddr>127.0.0.1</ipaddr>
+        <netmask>255.0.0.0</netmask>
+        <network>127.0.0.0</network>
+        <prefixlen>8</prefixlen>
+        <startmode>nfsroot</startmode>
+        <usercontrol>no</usercontrol>
+      </interface>
+    </interfaces>
+    <ipv6 config:type="boolean">true</ipv6>
+    <keep_install_network config:type="boolean">true</keep_install_network>
+    <managed config:type="boolean">false</managed>
+    <net-udev config:type="list">
+      <rule>
+        <name>eth0</name>
+        <rule>KERNELS</rule>
+        <value>0000:00:03.0</value>
+      </rule>
+    </net-udev>
+    <routing>
+      <ipv4_forward config:type="boolean">false</ipv4_forward>
+      <ipv6_forward config:type="boolean">false</ipv6_forward>
+    </routing>
+  </networking>
+  <ntp-client>
+    <ntp_policy>auto</ntp_policy>
+    <ntp_servers config:type="list"/>
+    <ntp_sync>manual</ntp_sync>
+  </ntp-client>
+  <partitioning config:type="list">
+    <drive>
+      <device>/dev/vda</device>
+      <disklabel>gpt</disklabel>
+      <enable_snapshots config:type="boolean">true</enable_snapshots>
+      <initialize config:type="boolean">false</initialize>
+      <partitions config:type="list">
+        <partition>
+          <create config:type="boolean">true</create>
+          <create_subvolumes config:type="boolean">true</create_subvolumes>
+          <filesystem config:type="symbol">btrfs</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/</mount>
+          <mountby config:type="symbol">uuid</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">3</partition_nr>
+          <partition_type>primary</partition_type>
+          <resize config:type="boolean">false</resize>
+          <size>max</size>
+          <subvolumes config:type="list">
+            <subvolume>
+              <copy_on_write config:type="boolean">false</copy_on_write>
+              <path>var</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>var/cache</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>usr/local</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>tmp</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>srv</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>root</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>opt</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>boot/grub2/x86_64-efi</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>boot/grub2/i386-pc</path>
+            </subvolume>
+          </subvolumes>
+          <subvolumes_prefix><![CDATA[@]]></subvolumes_prefix>
+        </partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">swap</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>swap</mount>
+          <mountby config:type="symbol">uuid</mountby>
+          <partition_id config:type="integer">130</partition_id>
+          <partition_nr config:type="integer">2</partition_nr>
+          <partition_type>primary</partition_type>
+          <resize config:type="boolean">false</resize>
+          <size>2G</size>
+        </partition>
+      </partitions>
+      <type config:type="symbol">CT_DISK</type>
+      <use>all</use>
+    </drive>
+  </partitioning>
+  <report>
+    <errors>
+      <log config:type="boolean">true</log>
+      <show config:type="boolean">true</show>
+      <timeout config:type="integer">0</timeout>
+    </errors>
+    <messages>
+      <log config:type="boolean">true</log>
+      <show config:type="boolean">true</show>
+      <timeout config:type="integer">0</timeout>
+    </messages>
+    <warnings>
+      <log config:type="boolean">true</log>
+      <show config:type="boolean">true</show>
+      <timeout config:type="integer">0</timeout>
+    </warnings>
+    <yesno_messages>
+      <log config:type="boolean">true</log>
+      <show config:type="boolean">true</show>
+      <timeout config:type="integer">0</timeout>
+    </yesno_messages>
+  </report>
+  <services-manager>
+    <default_target>multi-user</default_target>
+    <services>
+      <disable config:type="list"/>
+      <enable config:type="list">
+        <service>YaST2-Firstboot</service>
+        <service>YaST2-Second-Stage</service>
+        <service>auditd</service>
+        <service>btrfsmaintenance-refresh</service>
+        <service>ca-certificates</service>
+        <service>wickedd-auto4</service>
+        <service>wickedd-dhcp4</service>
+        <service>wickedd-dhcp6</service>
+        <service>wickedd-nanny</service>
+        <service>getty@tty1</service>
+        <service>irqbalance</service>
+        <service>kbdsettings</service>
+        <service>kdump</service>
+        <service>kdump-early</service>
+        <service>wicked</service>
+        <service>purge-kernels</service>
+        <service>sshd</service>
+      </enable>
+    </services>
+  </services-manager>
+  <software>
+    <install_recommended config:type="boolean">false</install_recommended>
+    <do_online_update config:type="boolean">true</do_online_update>
+    <instsource/>
+    <packages config:type="list">
+      <package>audit</package>
+      <package>snapper</package>
+      <package>openssh</package>
+      <package>kexec-tools</package>
+      <package>kdump</package>
+      <package>grub2</package>
+      <package>glibc</package>
+      <package>btrfsprogs</package>
+      <package>btrfsmaintenance</package>
+      <package>autoyast2</package>
+      <package>less</package>
+      <package>sudo</package>
+      <package>vim</package>
+      <package>python3</package>
+    </packages>
+    <patterns config:type="list">
+      <pattern>basesystem</pattern>
+    </patterns>
+  </software>
+  <ssh_import>
+    <copy_config config:type="boolean">false</copy_config>
+    <import config:type="boolean">false</import>
+  </ssh_import>
+  <timezone>
+    <hwclock>UTC</hwclock>
+    <timezone>America/New_York</timezone>
+  </timezone>
+  <user_defaults>
+    <expire/>
+    <group>100</group>
+    <groups/>
+    <home>/home</home>
+    <inactive>-1</inactive>
+    <no_groups config:type="boolean">true</no_groups>
+    <shell>/bin/bash</shell>
+    <skel>/etc/skel</skel>
+    <umask>022</umask>
+  </user_defaults>
+  <users config:type="list">
+    <user>
+      <authorized_keys config:type="list">
+      <listentry>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJxbfk3tvjyRj00mOYk5Q3Yg8crCyMe99tHFfjLQRY+450n8R2MrOlys3e7wvf4QP9l3O56mK9ima0QxBGg61AS1UIoK6m1V17dko0vbCwqL/HTg2mvImn9wsCmchw1jDHPj1NKd7pFxdiuhwisvFoi71G3A+CrAW1T7K4A41at7o5dQd9hmpH4RwJNacqYVltEefj5oP5O+kykHorZ472uLFj4mo+Dfs0cTLUmviD0w/Tax7Ov8upSHraym6jKU/h2Y08Bb/MoLJnYOnh3U9C7cAm19y+Kk0/Smz4D78obJfNfR+nbaWavRls9M4onE+SPXHZ0w21DZLVMR61gRKGlnRoH3rpDEy5L3TsgFptbYbwy3nM0k9xvtYxwTSNBAlqHHfthBwb2D+YiXe/2PhqSa4W/O7eYLVbtGJtHyvY6dZIYMBKE53qlXP4JnRRX7/p4+lXeQ+zt18vuypNYyWiCIT7IavPJmCPRi3Lg4OkErEL9xmTgz+CBdN1+bFue9k= provisioner@terraform</listentry>
+      </authorized_keys>
+      <encrypted config:type="boolean">true</encrypted>
+      <fullname>Ansible Provisioner</fullname>
+      <gid>100</gid>
+      <home>/home/provisioner</home>
+      <password_settings>
+        <expire/>
+        <flag/>
+        <inact/>
+        <max>99999</max>
+        <min>0</min>
+        <warn>7</warn>
+      </password_settings>
+      <shell>/bin/bash</shell>
+      <uid>999</uid>
+      <user_password>$6$/K3YfJM2GbUO$KngEXflivhTc8OZXlAqRgBLcLFKjAf4ZIRVdFqT9WLCOicd9ZHj1MECxgln6wwax5WnqAzvPk8LRbbYnC7Er11</user_password>
+      <username>provisioner</username>
+    </user>
+    <user>
+      <authorized_keys config:type="list">
+      <listentry>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILh2Z3UT0ADK4AVsqsX2il1LtVQ8nMBGaamcMHkk6dem jeffm@nuc</listentry>
+      </authorized_keys>
+      <encrypted config:type="boolean">true</encrypted>
+      <fullname>Jeff Mahoney</fullname>
+      <gid>100</gid>
+      <home>/home/jeffm</home>
+      <password_settings>
+        <expire/>
+        <flag/>
+        <inact/>
+        <max>99999</max>
+        <min>0</min>
+        <warn>7</warn>
+      </password_settings>
+      <shell>/bin/bash</shell>
+      <uid>1000</uid>
+      <user_password>$6$/K3YfJM2GbUO$KngEXflivhTc8OZXlAqRgBLcLFKjAf4ZIRVdFqT9WLCOicd9ZHj1MECxgln6wwax5WnqAzvPk8LRbbYnC7Er11</user_password>
+      <username>jeffm</username>
+    </user>
+    <user>
+      <authorized_keys config:type="list"/>
+      <encrypted config:type="boolean">true</encrypted>
+      <fullname>root</fullname>
+      <gid>0</gid>
+      <home>/root</home>
+      <password_settings>
+        <expire/>
+        <flag/>
+        <inact/>
+        <max/>
+        <min/>
+        <warn/>
+      </password_settings>
+      <shell>/bin/bash</shell>
+      <uid>0</uid>
+      <user_password>$6$fI021/JPOrRI$1OFYGNnnl8WBYHGCwUmQLVcMxiDAxEAdvoNv687Hr2254ydgsOx1gkBznkTvvDSAMucPcLheArY4n16VwTclh/</user_password>
+      <username>root</username>
+    </user>
+  </users>
+</profile>
