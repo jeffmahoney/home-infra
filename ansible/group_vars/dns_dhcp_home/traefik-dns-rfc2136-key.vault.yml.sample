@@ -1,0 +1,2 @@
+traefik_rfc2136_tsig_key: name-of-key-for-dns-server
+traefik_rfc2136_tsig_secret: key-for-dns-server

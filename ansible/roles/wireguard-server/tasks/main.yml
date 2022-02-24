@@ -1,0 +1,19 @@
+- name: Install frr to share networks for VPN
+  package:
+    name: frr
+    state: latest
+- name: Install Wireguard
+  package:
+    name: wireguard-tools
+    state: latest
+- name: Include wireguard role
+  include_role:
+    name: githubixx.ansible_role_wireguard
+- name: Include frr role
+  include_role:
+    name: mrlesmithjr.frr
+- name: Add Wireguard input for Telegraf
+  set_fact:
+    wireguard_plugin: wireguard
+  when:
+    - telegraf_agent_version is version('1.14.0', '>=')

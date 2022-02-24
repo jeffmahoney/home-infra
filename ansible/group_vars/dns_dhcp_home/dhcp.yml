@@ -1,0 +1,332 @@
+dhcp_global_domain_name: home.jeffm.io
+dhcp_global_domain_search: home.jeffm.io
+dhcp_global_domain_name_servers:
+  - 192.168.115.2
+dhcp_global_ntp_servers:
+  - 192.168.115.2
+dhcp_global_next_server: nas.home.jeffm.io
+dhcp_global_other_options:
+  - "nis-domain \"home.jeffm.io\""
+dhcp_interfaces:
+  - eth0
+  - lo
+dhcp_subnets:
+  - ip: 192.168.1.0
+    netmask: 255.255.255.0
+    range_begin: 192.168.1.100
+    range_end: 192.168.1.199
+    routers: 192.168.1.253
+    hosts:
+      - name: x1-wifi
+        ip: 192.168.1.2
+        mac: '58:6c:25:5b:f7:c0'
+      - name: sled1m
+        ip: 192.168.1.3
+        mac: '9c:8e:99:29:8b:3e'
+      - name: sled3m
+        ip: 192.168.1.7
+        mac: 'e0:07:1b:f9:78:fc'
+      - name: sled4m
+        ip: 192.168.1.9
+        mac: 'e0:07:1b:f9:68:fc'
+      - name: mba
+        ip: 192.168.1.20
+        mac: '70:56:81:bf:4b:95'
+      - name: mbp-1
+        ip: 192.168.1.21
+        mac: '40:6c:8f:3b:66:69'
+      - name: hdhomerun
+        ip: 192.168.1.22
+        mac: '00:18:dd:07:36:9f'
+      - name: macmini
+        ip: 192.168.1.23
+        mac: '3c:22:fb:22:35:c5'
+      - name: gem
+        ip: 192.168.1.28
+        mac: 'ac:cf:23:2d:6d:b3'
+      - name: nest
+        ip: 192.168.1.29
+        mac: '18:b4:30:0c:28:51'
+      - name: printer-wired
+        ip: 192.168.1.31
+        mac: 'ac:16:2d:3c:37:5c'
+      - name: color-printer
+        ip: 192.168.1.32
+        mac: 'bc:e9:2f:d2:59:18'
+      - name: pdu
+        ip: 192.168.1.33
+        mac: '00:c0:b7:92:31:6f'
+      - name: rpi3
+        ip: 192.168.1.34
+        mac: 'b8:27:eb:33:84:25'
+      - name: envoy
+        ip: 192.168.1.36
+        mac: '00:1d:c0:63:44:75'
+      - name: sr7008
+        ip: 192.168.1.37
+        mac: '00:06:78:1f:35:3c'
+      - name: tivo
+        ip: 192.168.1.39
+        mac: '00:11:d9:40:00:94'
+      - name: ps3
+        ip: 192.168.1.47
+        mac: '00:19:c5:81:46:61'
+      - name: wii
+        ip: 192.168.1.48
+        mac: '8c:cd:e8:03:9b:9a'
+      - name: ps4
+        ip: 192.168.1.67
+        mac: '70:9e:29:20:66:f3'
+      - name: salt
+        ip: 192.168.1.70
+        mac: '52:54:00:7b:a1:42'
+      - name: watch-await
+        ip: 192.168.1.73
+        mac: '0a:06:79:24:2a:a1'
+      - name: iphone-jeffm-1
+        ip: 192.168.1.200
+        mac: '90:8c:43:4c:39:a1'
+      - name: microcell
+        ip: 192.168.1.202
+        mac: '74:54:7d:00:76:9c'
+      - name: unifi-basement-dining-1
+        ip: 192.168.1.204
+        mac: 'b4:fb:e4:49:99:2d'
+      - name: unifi-basement-living-1
+        ip: 192.168.1.205
+        mac: '80:2a:a8:80:f2:c6'
+      - name: unifi-basement-kitchen-1
+        ip: 192.168.1.206
+        mac: 'b4:fb:e4:49:99:36'
+      - name: unifi-office-1
+        ip: 192.168.1.207
+        mac: '80:2a:a8:80:e4:3c'
+      - name: prosafe3
+        ip: 192.168.1.208
+        mac: 'dc:ef:09:df:1c:e9'
+      - name: unifi-front-yard-1
+        ip: 192.168.1.209
+        mac: '18:e8:29:10:71:9e'
+      - name: unifi-back-yard-1
+        ip: 192.168.1.210
+        mac: '18:e8:29:10:74:3e'
+      - name: ups1
+        ip: 192.168.1.245
+        mac: '00:c0:b7:ce:ca:1c'
+        # set vendor-string = option vendor-class-identifier;
+      - name: ups2
+        ip: 192.168.1.246
+        mac: '00:c0:b7:c4:3f:15'
+      - name: prosafe2
+        ip: 192.168.1.247
+        mac: '08:02:8e:8a:45:34'
+      - name: prosafe1
+        ip: 192.168.1.250
+        mac: '08:bd:43:c7:8f:91'
+      - name: starscream
+        ip: 192.168.1.254
+        mac: '40:b0:76:5b:02:5a'
+  - ip: 192.168.6.0
+    netmask: 255.255.255.0
+    range_begin: 192.168.6.10
+    range_end: 192.168.6.19
+    routers: 192.168.6.1
+    domain_name_servers: 192.168.6.1
+  - ip: 192.168.110.0
+    netmask: 255.255.255.0
+    range_begin: 192.168.110.100
+    range_end: 192.168.110.199
+    routers: 192.168.110.1
+    hosts:
+      - name: shell
+        ip: 192.168.110.2
+        mac: '52:54:00:08:da:1f'
+      - name: rmt
+        ip: 192.168.110.7
+        mac: '52:54:00:5a:11:f9'
+      - name: mail
+        ip: 192.168.110.8
+        mac: '52:54:00:d3:a9:45'
+      - name: shell2
+        ip: 192.168.110.9
+        mac: '52:54:00:f5:bc:83'
+      - name: nuc
+        ip: 192.168.110.64
+        mac: '00:1f:c6:9c:97:da'
+      - name: docker
+        ip: 192.168.110.66
+        mac: '52:54:00:6d:dc:28'
+      - name: iphone-jeffm-110
+        ip: 192.168.110.200
+        mac: '90:8c:43:4c:39:a1'
+  - ip: 192.168.113.0
+    netmask: 255.255.255.0
+    range_begin: 192.168.113.100
+    range_end: 192.168.113.199
+    routers: 192.168.113.1
+  - ip: 192.168.114.0
+    netmask: 255.255.255.0
+    range_begin: 192.168.114.100
+    range_end: 192.168.114.199
+    routers: 192.168.114.1
+    hosts:
+      - name: unifi-office
+        ip: 192.168.114.6
+        mac: '80:2a:a8:80:e4:3c'
+      - name: unifi-basement-kitchen
+        ip: 192.168.114.7
+        mac: 'b4:fb:e4:49:99:36'
+      - name: unifi-front-yard
+        ip: 192.168.114.8
+        mac: '18:e8:29:10:71:9e'
+      - name: unifi-back-yard
+        ip: 192.168.114.9
+        mac: '18:e8:29:10:74:3e'
+      - name: unifi-basement-living
+        ip: 192.168.114.10
+        mac: '80:2a:a8:80:f2:c6'
+      - name: unifi-basement-dining
+        ip: 192.168.114.11
+        mac: 'b4:fb:e4:49:99:2d'
+  - ip: 192.168.115.0
+    netmask: 255.255.255.0
+    range_begin: 192.168.115.100
+    range_end: 192.168.115.199
+    routers: 192.168.115.1
+    hosts:
+      #      - name: vrouter-115
+      #        ip: 192.168.115.1
+      #      - name: netserv-115
+      #        ip: 192.168.115.2
+      - name: ucs-master
+        ip: 192.168.115.3
+        mac: '52:54:00:f5:07:83'
+      - name: work-router-115
+        ip: 192.168.115.4
+        mac: '52:54:00:bb:5b:ce'
+  - ip: 192.168.116.0
+    netmask: 255.255.255.0
+    range_begin: 192.168.116.100
+    range_end: 192.168.116.199
+    routers: 192.168.116.1
+    hosts:
+      - name: scnuc
+        ip: 192.168.116.2
+        mac: 'd6:ec:0f:bb:31:cb'
+      - name: mac-mini
+        ip: 192.168.116.3
+        mac: '14:9d:99:7b:f3:46'
+      - name: mac-mini-wifi-116
+        ip: 192.168.116.4
+        mac: '3c:22:fb:22:35:c5'
+      - name: mbp-116
+        ip: 192.168.116.5
+        mac: '40:6c:8f:3b:66:69'
+      - name: iphone-jeffm-116
+        ip: 192.168.116.200
+        mac: '90:8c:43:4c:39:a1'
+  - ip: 192.168.117.0
+    netmask: 255.255.255.0
+    range_begin: 192.168.117.100
+    range_end: 192.168.117.199
+    routers: 192.168.117.1
+    domain_name_servers: 192.168.117.1
+    hosts:
+      - name: office-ac
+        ip: 192.168.117.4
+        mac: 'd8:28:c9:07:e8:f3'
+      - name: m4-speaker
+        ip: 192.168.117.5
+        mac: '40:e2:30:0b:5f:34'
+      - name: camera1
+        ip: 192.168.117.6
+        mac: 'f0:00:00:50:06:62'
+      - name: scale
+        ip: 192.168.117.8
+        mac: '00:24:e4:9f:51:96'
+      - name: ecobee-upstairs
+        ip: 192.168.117.10
+        mac: '44:61:32:f8:6a:02'
+      - name: livingroom-tv
+        ip: 192.168.117.11
+        mac: 'ac:9b:0a:e2:08:43'
+      - name: smartplug-737
+        ip: 192.168.117.12
+        mac: 'd8:ec:5e:07:89:88'
+      - name: smartplug-715
+        ip: 192.168.117.13
+        mac: 'd8:ec:5e:07:98:fc'
+      - name: smartplug-930
+        ip: 192.168.117.14
+        mac: 'd8:ec:5e:07:9a:aa'
+      - name: sensibo-master-bedroom
+        ip: 192.168.117.15
+        mac: '30:83:98:53:b2:5c'
+      - name: sensibo-master-bathroom
+        ip: 192.168.117.16
+        mac: '34:ab:95:65:69:d8'
+      - name: sensibo-changing-room
+        ip: 192.168.117.17
+        mac: 'c4:dd:57:c0:81:c8'
+      - name: sensibo-kitchen
+        ip: 192.168.117.18
+        mac: 'c4:dd:57:c0:77:58'
+      - name: ecobee-main-floor
+        ip: 192.168.117.19
+        mac: '44:61:32:14:25:bf'
+      - name: ecobee-living-room
+        ip: 192.168.117.20
+        mac: '44:61:32:b0:b1:ec'
+      - name: porch-door-lock
+        ip: 192.168.117.21
+        mac: '78:9c:85:21:8e:43'
+      - name: airmega-office
+        ip: 192.168.117.22
+        mac: '8e:71:f2:3a:a6:30'
+      - name: airmega-bedroom
+        ip: 192.168.117.23
+        mac: '84:72:07:24:1f:bb'
+      - name: iphone-jeffm-117
+        ip: 192.168.117.200
+        mac: '90:8c:43:4c:39:a1'
+dhcp_hosts:
+  - name: photos
+    ip: photos.home.jeffm.io
+    mac: '8c:f7:10:98:0f:b2'
+  - name: newrouter
+    ip: newrouter.home.jeffm.io
+    mac: '0c:c4:7a:97:e9:b4'
+  - name: newrouter-ipmi
+    ip: newrouter-ipmi.home.jeffm.io
+    mac: '0c:c4:7a:97:e1:7b'
+
+dhcp6_enable: true
+dhcp6_subnets:
+  - ip: 'fc00:559:57b:115::'
+    cidr: 64
+    range_begin: 'fc00:559:57b:115::ffff:1'
+    range_end: 'fc00:559:57b:115::ffff:ffff'
+  - ip: 'fc00:559:57b:117::'
+    cidr: 64
+    range_begin: 'fc00:559:57b:117::ffff:1'
+    range_end: 'fc00:559:57b:117::ffff:ffff'
+  - ip: '2001:559:57b:1::'
+    cidr: 64
+    range_begin: '2001:559:57b:1::ffff:1'
+    range_end: '2001:559:57b:1::ffff:ffff'
+  - ip: '2001:559:57b:110::'
+    cidr: 64
+    range_begin: '2001:559:57b:110::ffff:1'
+    range_end: '2001:559:57b:110::ffff:ffff'
+  - ip: '2001:559:57b:113::'
+    cidr: 64
+    range_begin: '2001:559:57b:113::ffff:1'
+    range_end: '2001:559:57b:113::ffff:ffff'
+  - ip: '2001:559:57b:114::'
+    cidr: 64
+    range_begin: '2001:559:57b:114::ffff:1'
+    range_end: '2001:559:57b:114::ffff:ffff'
+  - ip: '2001:559:57b:116::'
+    cidr: 64
+    range_begin: '2001:559:57b:116::ffff:1'
+    range_end: '2001:559:57b:116::ffff:ffff'

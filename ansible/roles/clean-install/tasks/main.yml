@@ -1,0 +1,11 @@
+- name: Update system
+  community.general.zypper:
+    name: '*'
+    update_cache: yes
+    state: latest
+    type: patch
+- name: Remove yast2
+  community.general.zypper:
+    name: yast2
+    state: absent
+    clean_deps: true

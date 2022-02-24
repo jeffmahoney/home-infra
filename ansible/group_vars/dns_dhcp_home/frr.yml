@@ -1,0 +1,48 @@
+frr_daemons:
+  bfdd: false
+  bgpd: false
+  isisd: false
+  ldpd: false
+  nhrpd: false
+  ospf6d: true
+  ospfd: true
+  pimd: false
+  ripd: false
+  ripngd: false
+  zebra: true
+
+frr_interfaces:
+  eth0:
+    other:
+      - "ipv6 ospf6 area 0.0.0.0"
+  wg0:
+    other:
+      - "ipv6 ospf6 area 0.0.0.1"
+
+frr_router_id: "192.168.115.2"
+frr_ospf:
+  areas:
+    0:
+      networks:
+        - "{{ hostvars[inventory_hostname]['ansible_eth0']['ipv4']['address'] }}/24"
+  redistribute:
+    - connected
+    - kernel
+  log_adjacency_changes: true
+  passive_interfaces: # A list of interfaces to set passive
+    - default
+
+frr_ospf6:
+  areas:
+    0.0.0.0:
+      networks:
+        - "{{ hostvars[inventory_hostname]['ansible_eth0']['ipv6']['address'] }}/64"
+    0.0.0.1:
+      networks:
+        - "{{ hostvars[inventory_hostname]['ansible_wg0']['ipv6']['address'] }}/64"
+  redistribute:
+    - connected
+    - kernel
+  log_adjacency_changes: true
+  passive_interfaces: # A list of interfaces to set passive
+    - default

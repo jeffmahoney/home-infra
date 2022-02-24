@@ -1,0 +1,63 @@
+- name: Create ubnt users
+  user:
+    name: ubnt
+    shell: /bin/bash
+    groups: docker
+    password_lock: yes
+
+- name: Install docker-compose
+  package:
+    name: python3-docker-compose
+    state: latest
+
+- name: Start docker
+  service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Install Unifi Controller docker-compose configuration
+  copy:
+    src: files/docker-compose.yml
+    dest: /home/ubnt/docker-compose.yml
+    owner: ubnt
+    group: users
+    mode: '0644'
+
+- name: Create config directory for traefik
+  file:
+    path: /home/ubnt/traefik-data
+    state: directory
+    mode: '0700'
+    owner: ubnt
+    group: users
+
+- name: Create environment for traefik container
+  ansible.builtin.template:
+    src: traefik.env.j2
+    dest: /home/ubnt/traefik-data/traefik.env
+    owner: ubnt
+    group: users
+    mode: '0600'
+
+- name: Create config for traefik container
+  ansible.builtin.template:
+    src: traefik.toml.j2
+    dest: /home/ubnt/traefik-data/traefik.toml
+    owner: ubnt
+    group: users
+    mode: '0600'
+
+- name: Create ACME storage file
+  ansible.builtin.file:
+    path: /home/ubnt/traefik-data/acme.json
+    state: touch
+    mode: '0600'
+
+- name: Create data directory for controller
+  file:
+    path: /home/ubnt/unifi-data
+    state: directory
+    mode: '0700'
+    owner: ubnt
+    group: users

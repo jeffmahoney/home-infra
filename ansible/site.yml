@@ -1,0 +1,12 @@
+- hosts: dns_dhcp_home
+  become: true
+  remote_user: provisioner
+  roles:
+    #    - role: dump-vars
+    - role: unifi-controller
+    - role: clean-install
+    - role: tls-nameserver
+    - role: bertvv.dhcp
+    - role: bertvv.bind
+    - role: dj-wasabi.telegraf
+    - role: wireguard-server

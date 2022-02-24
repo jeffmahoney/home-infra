@@ -1,0 +1,20 @@
+telegraf_agent_package_state: latest
+
+telegraf_plugins_default:
+  - plugin: cpu
+    config:
+      - percpu = true
+      - totalcpu = true
+      - collect_cpu_time = false
+      - report_active = false
+  - plugin: disk
+    config:
+      - ignore_fs = [ "tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs" ]
+  - plugin: diskio
+  - plugin: kernel
+  - plugin: mem
+  - plugin: processes
+  - plugin: swap
+  - plugin: system
+  - plugin: net
+  - plugin: netstat

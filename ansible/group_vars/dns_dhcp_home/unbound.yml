@@ -1,0 +1,6 @@
+unbound_listen_addresses: ['127.0.0.1@8153','::1@8153']
+
+telegraf_plugins_extra:
+  - plugin: unbound
+    config:
+      - thread_as_tag = true

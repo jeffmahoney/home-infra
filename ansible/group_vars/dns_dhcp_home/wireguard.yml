@@ -1,0 +1,13 @@
+no_log: False
+wireguard_address: "192.168.118.1/24, 2001:559:57b:118::1/128"
+wireguard_private_key: "{{ vault_wireguard_private_key }}"
+wireguard_unmanaged_peers:
+  jeffm-phone.default.route:
+    allowed_ips: 192.168.118.2/32,2001:559:57b:118::2/128
+    public_key: ykwAa70ikKrpSjp8dW3Gn3yJ9aVXc0d/DiLYeysOD3w=
+  jeffm-phone.local.route:
+    allowed_ips: 192.168.118.4/32,2001:559:57b:118::4/128
+    public_key: IqEn64JRG2sd4DFxU+OICwbDoc/h2eDm7tzoH3gDOV4=
+  jeffm-macbook.local.route:
+    allowed_ips: 192.168.118.3/32
+    public_key: I8CTSm+mKIsPUQdi3hAYUf5/9/leRmGMnwt+txy9SSA=

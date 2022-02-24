@@ -1,0 +1,38 @@
+- name: Copy server:dns repository key
+  copy:
+    src: files/project-key.asc
+    dest: /etc/rpm/server:dns.asc
+    owner: root
+    group: root
+    mode: '0644'
+- name: Add server:dns repository key
+  rpm_key:
+    key: /etc/rpm/server:dns.asc
+    state: present
+- name: Add server:dns repository
+  community.general.zypper_repository:
+    repo: 'obs://server:dns/'
+    name: 'obs://server:dns/'
+- name: Install Unbound
+  package:
+    name: unbound>=1.13.1
+    state: present
+- name: Install Unbound TLS Forwarding
+  copy:
+    src: tls-forwarding.conf
+    dest: /etc/unbound/conf.d/tls-forwarding.conf
+    owner: root
+    group: root
+    mode: '0644'
+- name: Configure Unbound Interfaces
+  copy:
+    src: interfaces.conf
+    dest: /etc/unbound/local.d/interfaces.conf
+    owner: root
+    group: root
+    mode: '0644'
+- name: Ensure Unbound is started
+  service:
+    name: unbound
+    state: started
+    enabled: true

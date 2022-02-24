@@ -1,0 +1,186 @@
+bind_dnssec_enable: false # The option is obsolete
+bind_forwarders:
+  - 127.0.0.1 port 8153
+  - ::1 port 8153
+bind_allow_query:
+  - any
+bind_listen_ipv4:
+  - any
+bind_listen_ipv6:
+  - any
+bind_query_log:
+  file: log/querylog
+  size: 100m
+  versions: 5
+bind_other_logs:
+  - name: query-errors
+    file: log/query_errors
+    size: 100m
+    versions: 5
+bind_zones:
+  - name: home.jeffm.io
+    type: primary
+    create_reverse_zones: true
+    primaries:
+      - 192.168.115.1
+    name_servers:
+      - ns.home.jeffm.io.
+    mail_servers:
+      - name: mail.home.jeffm.io.
+        preference: 0
+    hosts:
+      - name: '@'
+        ip: 192.168.115.2
+      - name: airmega-bedroom
+        ip: 192.168.117.23
+      - name: airmeta-office
+        ip: 192.168.117.22
+      - name: await-iphone
+        ip: 192.168.1.72
+      - name: await-watch
+        ip: 192.168.1.73
+      - name: camera1
+        ip: 192.168.117.6
+      - name: camera2
+        ip: 192.168.117.7
+      - name: color-printer
+        ip: 192.168.1.32
+      - name: docker
+        ip: 192.168.110.66
+        ipv6: 2001:559:57b:110::66
+        aliases:
+          - grafana
+          - influxdb
+          - pki
+          - power
+      - name: ecobee-upstairs
+        ip: 192.168.117.10
+      - name: ecobee-main-floor
+        ip: 192.168.117.19
+      - name: ecobee-living-room
+        ip: 192.168.117.20
+      - name: ex3200
+        ip: 192.168.1.242
+      - name: extweb
+        ip: 192.168.1.71
+        ipv6: 2001:559:57b:1::71
+      - name: gem
+        ip: 192.168.1.28
+      - name: hdhomerun
+        ip: 192.168.1.22
+      - name: iphone-jeffm-117
+        ip: 192.168.117.200
+      - name: livingroom-tv
+        ip: 192.168.117.11
+      - name: m4-speaker
+        ip: 192.168.117.5
+      - name: macmini
+        ip: 192.168.116.3
+      - name: macmini-wifi
+        ip: 192.168.1.23
+      - name: macmini-wifi-116
+        ip: 192.168.116.4
+      - name: mail
+        ip: 192.168.110.8
+        ipv6: 2001:559:57b:110::8
+      - name: mbp-1
+        ip: 192.168.1.21
+        ipv6: 2001:559:57b:1::21
+      - name: mbp-116
+        ip: 192.168.116.5
+        ipv6: 2001:559:57b:116::5
+      - name: mcp
+        ip: 192.168.115.2
+        ipv6: 2001:559:57b:115::2
+      - name: newrouter
+        ip: 192.168.1.249
+      - name: newrouter-ipmi
+        ip: 192.168.1.248
+      - name: ns # mcp
+        ip: 192.168.115.2
+        ipv6: 2001:559:57b:115::2
+      - name: office-ac
+        ip: 192.168.117.4
+      - name: pdu
+        ip: 192.168.1.33
+      - name: photos
+        ip: 192.168.117.3
+      - name: porch-door-lock
+        ip: 192.167.117.21
+      - name: printer
+        ip: 192.168.1.31
+      - name: prosafe1
+        ip: 192.168.1.250
+      - name: prosafe2
+        ip: 192.168.1.247
+      - name: prosafe3
+        ip: 192.168.1.208
+      - name: ps4
+        ip: 192.168.1.67
+      - name: rancher
+        ip: 192.168.110.65
+        ipv6: 2001:559:57b:110::65
+      - name: router-1
+        ip: 192.168.115.253
+        ipv6: 2001:559:57b:1::1
+      - name: router-110
+        ip: 192.168.110.253
+        ipv6: 2001:559:57b:110::1
+      - name: router-113
+        ip: 192.168.113.1
+        ipv6: 2001:559:57b:113::1
+      - name: router-114
+        ip: 192.168.114.1
+        ipv6: 2001:559:57b:114::1
+      - name: router-115
+        ip: 192.168.115.1
+        ipv6: 2001:559:57b:114::1
+        aliases:
+          - router
+      - name: router-116
+        ip: 192.168.116.1
+        ipv6: 2001:559:57b:116::1
+      - name: router-117
+        ip: 192.168.117.1
+        ipv6: 2001:559:57b:117::1
+      - name: rpi3
+        ip: 192.168.1.34
+      - name: salt
+        ip: 192.168.1.70
+        ipv6: 2001:559:57b:1::170
+      - name: scale
+        ip: 192.168.117.8
+      - name: sensibo-master-bedroom
+        ip: 192.168.117.15
+      - name: sensibo-master-bathroom
+        ip: 192.168.117.16
+      - name: sensibo-changing-room
+        ip: 192.168.117.17
+      - name: sensibo-kitchen
+        ip: 192.168.117.18
+      - name: slackgif
+        ip: 192.168.1.10
+      - name: updates
+        ip: 192.168.110.6
+        ipv6: 2001:559:57b:110::6
+        aliases:
+          - rmt
+          - smt
+      - name: smartplug-715
+        ip: 192.168.117.13
+      - name: smartplug-737
+        ip: 192.168.117.12
+      - name: smartplug-930
+        ip: 192.168.117.14
+        aliases:
+          - smartplug-horace-ac
+      - name: sr7008
+        ip: 192.168.1.37
+      - name: nas
+        ip: 192.168.1.254
+        ipv6: 2001:559:57b:1::254
+        aliases:
+          - starscream
+      - name: plex.media.jeffm.io.
+        aliases:
+          - plex

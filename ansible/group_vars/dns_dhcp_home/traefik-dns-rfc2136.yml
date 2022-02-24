@@ -1,0 +1,5 @@
+traefik_rfc2136_nameserver: 192.168.115.1
+traefik_rfc2136_tsig_algorithm: hmac-sha512.
+traefik_rfc2136_timeout: 10
+traefik_acme_email: jeffm@jeffm.io
+traefik_rfc2136_domain: home.jeffm.io

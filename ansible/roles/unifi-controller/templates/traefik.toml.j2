@@ -1,0 +1,25 @@
+debug = false
+
+logLevel = "ERROR"
+defaultEntryPoints = ["https","http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+
+[retry]
+
+[acme]
+email = "{{ traefik_acme_email }}"
+storage = "acme.json"
+entryPoint = "https"
+OnHostRule = true
+[acme.dnsChallenge]
+entryPoint = "http"
+provider = "rfc2136"
+delayBeforeCheck = 60

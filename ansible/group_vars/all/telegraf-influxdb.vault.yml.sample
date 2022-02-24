@@ -1,0 +1,7 @@
+telegraf_agent_output:
+  - type: influxdb_v2
+    config:
+    - urls = ["https://influxdb.server.local"]
+    - token = "token-from-influxdb"
+    - organization = "organization-from-influxdb"
+    - bucket = "telegraf/autogen"
