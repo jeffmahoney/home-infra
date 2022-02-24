@@ -10,3 +10,17 @@
     - role: bertvv.bind
     - role: dj-wasabi.telegraf
     - role: wireguard-server
+- hosts: dns_dhcp_work
+  become: true
+  remote_user: provisioner
+  roles:
+    - role: clean-install
+    - role: bertvv.dhcp
+    - role: wireguard-server
+    - role: dj-wasabi.telegraf
+- hosts: generic_test
+  become: true
+  remote_user: provisioner
+  roles:
+    - dump-vars
+    - dj-wasabi.telegraf
